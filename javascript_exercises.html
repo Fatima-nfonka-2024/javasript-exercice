@@ -49,6 +49,7 @@ function daysLeftForChristmas() {
 
     //ex 4
        const findTheLongestString=(arr)=>{
+        longestString='';
         for (let str of arr){
          return str.length > longestString.length ? str : longestString;
         }
@@ -56,13 +57,16 @@ function daysLeftForChristmas() {
        }
 
  //ex 5
-const findLargestEvenNum =(arr)=>{
-   let largestNum=null;
-    for (let num of arr){
-        largestNum = (num % 2 === 0 && (largestNum === null || num > largestNum)) ? num : largestNum;
+ const findLargestEvenNum = (arr) => {
+    let largestNum = null;
+    for (let num of arr) {
+        if (num % 2 === 0) {
+            largestNum = largestNum === null ? num : Math.max(largestNum, num);
+        }
     }
-    return largestNum
-   }
+    return largestNum; 
+};
+   
 
    //ex 6
    function removeDuplicates(inputString) {
