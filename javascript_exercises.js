@@ -1,51 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="clock">
-        
-    </div>
-    
-    <script>
-        
-              //ex 1
+//ex 1
         function guestNum(guestInput) {
     const randomNum = Math.floor(Math.random() * 10) + 1;
     let guestNumber = Number(guestInput); 
     return (!isNaN(guestNumber) && guestNumber >= 1 && guestNumber <= 10) ? "Good Work" : "Not Match";
-
 }
-
 
 //ex 2
-
-function daysLeftForChristmas() {
+const daysLeftForChristmas = () => {
     const presentDay = new Date();
     const christmasDay = new Date(presentDay.getFullYear(), 11, 25);
-
-    let nextChristmas;
-    if (presentDay > christmasDay) {
-        nextChristmas = new Date(presentDay.getFullYear() + 1, 11, 25);
-        nextChristmas = christmasDay;
-    }
-    const differenceInTime = nextChristmas - presentDay;
-
-    const differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
-
-    return differenceInDays;
-}      
-        //ex 3 
-        function Calculate(num1, num2) {
-    if (isNaN(num1) || isNaN(num2)) {
-        return; 
-    }
-    const multiplicationResult = num1 * num2;
-    const divisionResult = num1 / num2;
-}
+    if (presentDay > christmasDay) christmasDay.setFullYear(christmasDay.getFullYear() + 1);
+    return Math.round((christmasDay - presentDay) / (1000 * 3600 * 24));
+};
+module.exports =daysLeftForChristmas;
+//ex 3 
+        const Calculate = (num1, num2) => {
+            if (isNaN(num1) || isNaN(num2)) return;
+            return { multiplicationResult: num1 * num2, divisionResult: num1 / num2 };
+        };
 
     //ex 4
        const findTheLongestString=(arr)=>{
@@ -128,8 +100,8 @@ class Cylinder{
         this.radius=radius;
     }
     CalculateVolume(){
-        const Volume=Math.PI*Math.pow(this.radius,2)*this.height;
-        return Volume.toFixed(4);
+        const volume=Math.PI*Math.pow(this.radius,2)*this.height;
+        return volume.toFixed(4);
     }
 }
 
@@ -196,8 +168,15 @@ const combinedArr = [...new Set([...arr1, ...arr2])].sort((a, b) => a - b);
 
 //ex 5
 
-const Car={make:"toyota", model:"hummer", year:"2013" };
-const {make,model,year="unknown"}=Car;
+// car.js
+const Car = { make: "toyota", model: "hummer", year: "2013" };
+
+function getCarDetails() {
+  const { make, model, year = "unknown" } = Car;
+  return { make, model, year };
+}
+
+
 
 //ex 6
 const Cycle=(radius)=>{
@@ -206,12 +185,11 @@ const Cycle=(radius)=>{
 }
 
 //ex 7
-function averageScore(){
-    const average=(...score)=>{
-        const total=score.reduce((acc,score)=>acc+score,0);
-        return (total/score.length).toFixed(2);
-    }
-}
+function averageScore(...score) {
+    const total = score.reduce((acc, score) => acc + score, 0);
+    return (total / score.length).toFixed(2);
+  }
+  
     
 
 //ex 8
@@ -237,8 +215,3 @@ const fetchData=()=>{
         },delay)
     });
 }     
-
-
-</script>
-</body>
-</html>
